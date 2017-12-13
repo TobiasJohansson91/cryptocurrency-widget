@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 /**
  * The configuration screen for the {@link NewAppWidget NewAppWidget} AppWidget.
@@ -18,6 +19,7 @@ public class NewAppWidgetConfigureActivity extends Activity {
     private static final String PREF_PREFIX_KEY = "appwidget_";
     int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
     EditText mAppWidgetText;
+    Spinner spinner;
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         public void onClick(View v) {
             final Context context = NewAppWidgetConfigureActivity.this;
@@ -77,7 +79,9 @@ public class NewAppWidgetConfigureActivity extends Activity {
 
         setContentView(R.layout.new_app_widget_configure);
         mAppWidgetText = (EditText) findViewById(R.id.editText);
+        spinner = findViewById(R.id.spinner);
         findViewById(R.id.add_button).setOnClickListener(mOnClickListener);
+        populateSpinner();
 
         // Find the widget id from the intent.
         Intent intent = getIntent();
@@ -94,6 +98,10 @@ public class NewAppWidgetConfigureActivity extends Activity {
         }
 
         mAppWidgetText.setText(loadTitlePref(NewAppWidgetConfigureActivity.this, mAppWidgetId));
+    }
+    private void populateSpinner(){
+        WebApiAsyncTask asyncTask = new WebApiAsyncTask(this, spinner);
+        asyncTask.execute();
     }
 }
 
