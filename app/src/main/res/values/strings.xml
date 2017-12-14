@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Crypptocurrency widget2</string>
-    <string name="appwidget_text">EXAMPLE</string>
+    <string name="app_name">Cryptocurrency widget2</string>
+    <string name="appwidget_text">Cryptocurrency</string>
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
+    <string name="error">Error</string>
 </resources>

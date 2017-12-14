@@ -2,7 +2,6 @@ package com.example.mrx.crypptocurrencywidget2;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
