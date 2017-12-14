@@ -60,9 +60,9 @@ public class WebApiAsyncTask extends AsyncTask<Void, Void, String> {
             jsonString = stringBuilder.toString();
 
         } catch (MalformedURLException e) {
-            Toast.makeText(context, "MalformedURLException", Toast.LENGTH_SHORT);
+            Toast.makeText(context, "MalformedURLException", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
-            Toast.makeText(context, "IOException", Toast.LENGTH_SHORT);
+            Toast.makeText(context, "IOException", Toast.LENGTH_SHORT).show();
         }
         return jsonString;
     }
@@ -80,7 +80,7 @@ public class WebApiAsyncTask extends AsyncTask<Void, Void, String> {
                     arrayList.add(object.getString("name"));
                 }
             } catch (JSONException e) {
-                Toast.makeText(context, "JSONException", Toast.LENGTH_SHORT);
+                Toast.makeText(context, "JSONException", Toast.LENGTH_SHORT).show();
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, arrayList);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

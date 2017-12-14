@@ -16,8 +16,8 @@ import android.widget.Spinner;
  */
 public class NewAppWidgetConfigureActivity extends Activity implements AdapterView.OnItemSelectedListener{
 
-    private static final String PREFS_NAME = "com.example.mrx.crypptocurrencywidget2.NewAppWidget";
-    private static final String PREF_PREFIX_KEY = "appwidget_";
+    public static final String PREFS_NAME = "com.example.mrx.crypptocurrencywidget2.NewAppWidget";
+    public static final String PREF_PREFIX_KEY = "appwidget_";
     private static final String PREF_COINNAME_KEY = "coinname_";
     int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
     EditText mAppWidgetText;
