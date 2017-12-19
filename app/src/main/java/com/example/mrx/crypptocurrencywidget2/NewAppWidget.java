@@ -1,10 +1,12 @@
 package com.example.mrx.crypptocurrencywidget2;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -21,10 +23,17 @@ public class NewAppWidget extends AppWidgetProvider {
         SharedPreferences sharedPreferences =
                 context.getSharedPreferences(NewAppWidgetConfigureActivity.PREFS_NAME, 0);
         double boughtPrice = Double.parseDouble(sharedPreferences.getString(NewAppWidgetConfigureActivity.PREF_PREFIX_KEY + appWidgetId, "0"));
+
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.new_app_widget);
         views.setTextViewText(R.id.textView, widgetText);
-        GetCoinWebApiAsyncTask getCoin = new GetCoinWebApiAsyncTask(views, widgetText, boughtPrice);
+
+        Intent intent = new Intent(context, NewAppWidget.class);
+        intent.setAction("updateWidgetNow");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        views.setOnClickPendingIntent(R.id.newlayout, pendingIntent);
+
+        GetCoinWebApiAsyncTask getCoin = new GetCoinWebApiAsyncTask(views, widgetText, boughtPrice, appWidgetId, appWidgetManager);
         getCoin.execute();
 
         // Instruct the widget manager to update the widget
@@ -37,6 +46,7 @@ public class NewAppWidget extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
+
     }
 
     @Override
@@ -56,5 +66,16 @@ public class NewAppWidget extends AppWidgetProvider {
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
     }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+            Toast.makeText(context, "work", Toast.LENGTH_SHORT).show();
+        if ("updateWidgetNow".equals(intent.getAction())){
+            Log.d("oooo", "llkpj");
+        }
+
+    }
+
 }
 

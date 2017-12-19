@@ -1,5 +1,6 @@
 package com.example.mrx.crypptocurrencywidget2;
 
+import android.appwidget.AppWidgetManager;
 import android.os.AsyncTask;
 import android.widget.RemoteViews;
 
@@ -28,11 +29,15 @@ public class GetCoinWebApiAsyncTask extends AsyncTask<Void, Void, String> {
     private String coinRequest;
     private RemoteViews views;
     private double boughtPrice;
+    private int appWidgetId;
+    private AppWidgetManager appWidgetManager;
 
-    public GetCoinWebApiAsyncTask(RemoteViews views, String coin, Double boughtPrice) {
+    public GetCoinWebApiAsyncTask(RemoteViews views, String coin, Double boughtPrice, int appWidgetId, AppWidgetManager appWidgetManager) {
         this.coinRequest = coin + "/";
         this.views = views;
         this.boughtPrice = boughtPrice;
+        this.appWidgetId = appWidgetId;
+        this.appWidgetManager = appWidgetManager;
     }
 
     @Override
@@ -75,7 +80,7 @@ public class GetCoinWebApiAsyncTask extends AsyncTask<Void, Void, String> {
             try {
                 JSONArray jsonArray = new JSONArray(jasonString);
                 JSONObject jsonObject =jsonArray.getJSONObject(0);
-                value = "" + jsonObject.getInt("price_usd");
+                value = "" + jsonObject.getDouble("price_usd");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -83,6 +88,7 @@ public class GetCoinWebApiAsyncTask extends AsyncTask<Void, Void, String> {
             percent = percent / boughtPrice * 100;
             views.setTextViewText(R.id.textView2, value);
             views.setTextViewText(R.id.textView3, "" + percent);
+            appWidgetManager.updateAppWidget(appWidgetId,views);
         }
     }
 }
