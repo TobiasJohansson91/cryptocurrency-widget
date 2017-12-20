@@ -17,7 +17,7 @@ import android.widget.Toast;
  */
 public class NewAppWidgetConfigureActivity extends Activity implements AdapterView.OnItemSelectedListener{
 
-    public static final String PREFS_NAME = "com.example.mrx.crypptocurrencywidget2.NewAppWidget";
+    public static final String PREFS_NAME = "com.example.mrx.crypptocurrencywidget2.NewAppWidget2";
     public static final String PREF_PREFIX_KEY = "appwidget_";
     public static final String PREF_COINNAME_KEY = "coinname_";
     int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
@@ -50,10 +50,21 @@ public class NewAppWidgetConfigureActivity extends Activity implements AdapterVi
 
     // Write the prefix to the SharedPreferences object for this widget
     static void saveTitlePref(Context context, int appWidgetId, String boughtPrice, String coin) {
+        String checkedBoughtPrice = checkBoughtPrice(boughtPrice);
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREFS_NAME, 0).edit();
-        prefs.putString(PREF_PREFIX_KEY + appWidgetId, boughtPrice);
+        prefs.putString(PREF_PREFIX_KEY + appWidgetId, checkedBoughtPrice);
         prefs.putString(PREF_COINNAME_KEY + appWidgetId, coin);
         prefs.apply();
+    }
+
+    private static String checkBoughtPrice(String boughtPrice) {
+        String checkedBoughtPrice;
+        if (boughtPrice.length() == 1 && boughtPrice.charAt(0) == '.' ||
+                boughtPrice.isEmpty())
+            checkedBoughtPrice = "0";
+        else
+            checkedBoughtPrice = boughtPrice;
+        return checkedBoughtPrice;
     }
 
     // Read the prefix from the SharedPreferences object for this widget.

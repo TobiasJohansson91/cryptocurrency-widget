@@ -38,6 +38,15 @@ public class GetCoinWebApiAsyncTask extends AsyncTask<Void, Void, String> {
         this.boughtPrice = boughtPrice;
         this.appWidgetId = appWidgetId;
         this.appWidgetManager = appWidgetManager;
+        checkIfSpaceInCoin();
+    }
+
+    private void checkIfSpaceInCoin() {
+        for (int i = 0; i < coinRequest.length(); i++) {
+            if (coinRequest.charAt(i) == ' ') {
+                coinRequest = coinRequest.substring(0, i) + "-" + coinRequest.substring(i+1);
+            }
+        }
     }
 
     @Override
@@ -86,8 +95,9 @@ public class GetCoinWebApiAsyncTask extends AsyncTask<Void, Void, String> {
             }
             double percent = Double.parseDouble(value);
             percent = percent / boughtPrice * 100;
+            String outputPercent = String.format("%.2f", percent);
             views.setTextViewText(R.id.textView2, value + " $");
-            views.setTextViewText(R.id.textView3, "" + percent + "%");
+            views.setTextViewText(R.id.textView3, outputPercent + "%");
             appWidgetManager.updateAppWidget(appWidgetId,views);
         }
     }

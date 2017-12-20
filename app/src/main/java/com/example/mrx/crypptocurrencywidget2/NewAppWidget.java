@@ -35,7 +35,7 @@ public class NewAppWidget extends AppWidgetProvider {
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.new_app_widget);
         views.setTextViewText(R.id.textView, widgetText);
-        views.setImageViewResource(R.id.imageView, R.drawable.bitcoin);
+        views.setImageViewResource(R.id.imageView, android.R.drawable.ic_delete);
         View view = new View(context);
 
         ArrayList<String> stringArray = new ArrayList(Arrays.asList(view.getResources().getStringArray(R.array.coins)));
