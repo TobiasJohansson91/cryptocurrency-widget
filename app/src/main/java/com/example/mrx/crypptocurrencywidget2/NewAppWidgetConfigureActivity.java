@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 /**
  * The configuration screen for the {@link NewAppWidget NewAppWidget} AppWidget.
@@ -18,7 +19,7 @@ public class NewAppWidgetConfigureActivity extends Activity implements AdapterVi
 
     public static final String PREFS_NAME = "com.example.mrx.crypptocurrencywidget2.NewAppWidget";
     public static final String PREF_PREFIX_KEY = "appwidget_";
-    private static final String PREF_COINNAME_KEY = "coinname_";
+    public static final String PREF_COINNAME_KEY = "coinname_";
     int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
     EditText mAppWidgetText;
     Spinner spinner;

@@ -86,8 +86,8 @@ public class GetCoinWebApiAsyncTask extends AsyncTask<Void, Void, String> {
             }
             double percent = Double.parseDouble(value);
             percent = percent / boughtPrice * 100;
-            views.setTextViewText(R.id.textView2, value);
-            views.setTextViewText(R.id.textView3, "" + percent);
+            views.setTextViewText(R.id.textView2, value + " $");
+            views.setTextViewText(R.id.textView3, "" + percent + "%");
             appWidgetManager.updateAppWidget(appWidgetId,views);
         }
     }

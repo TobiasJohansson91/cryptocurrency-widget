@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="coins">
+        <item>bitcoin</item>
+        <item>cardano</item>
+        <item>dash</item>
+        <item>eos</item>
+        <item>ethereum</item>
+        <item>iota</item>
+        <item>litecoin</item>
+        <item>monero</item>
+        <item>nem</item>
+        <item>neo</item>
+        <item>omisego</item>
+        <item>ripple</item>
+        <item>stellar</item>
+    </string-array>
+</resources>

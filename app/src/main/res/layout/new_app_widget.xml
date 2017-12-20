@@ -3,7 +3,7 @@
     android:id="@+id/newlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#09C"
+    android:background="@drawable/background_layout"
     android:padding="@dimen/widget_margin">
 
     <ImageView
@@ -15,10 +15,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:background="@color/colorAccent"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/imageview_background"
         android:visibility="visible"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        app:srcCompat="@android:drawable/ic_delete" />
 
     <TextView
         android:id="@+id/textView"
