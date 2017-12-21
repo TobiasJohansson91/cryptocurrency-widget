@@ -29,7 +29,8 @@
         android:layout_marginStart="12dp"
         android:layout_toEndOf="@+id/imageView"
         android:layout_toRightOf="@+id/imageView"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/textView2"
@@ -41,7 +42,8 @@
         android:layout_marginStart="48dp"
         android:layout_toEndOf="@+id/textView"
         android:layout_toRightOf="@+id/textView"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/textView3"
