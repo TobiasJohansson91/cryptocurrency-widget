@@ -1,6 +1,7 @@
 package com.example.mrx.crypptocurrencywidget2;
 
 import android.appwidget.AppWidgetManager;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.widget.RemoteViews;
 
@@ -93,12 +94,23 @@ public class GetCoinWebApiAsyncTask extends AsyncTask<Void, Void, String> {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            double percent = Double.parseDouble(value);
-            percent = percent / boughtPrice * 100;
+            double coinValue = Double.parseDouble(value);
+            double percent = calculatePercent(coinValue);
             String outputPercent = String.format("%.2f", percent);
             views.setTextViewText(R.id.textView2, value + " $");
             views.setTextViewText(R.id.textView3, outputPercent + "%");
+            if (percent < 0)
+                views.setTextColor(R.id.textView3, Color.parseColor("#FA0039"));
+            else
+                views.setTextColor(R.id.textView3, Color.parseColor("#0448FA"));
+
             appWidgetManager.updateAppWidget(appWidgetId,views);
         }
+    }
+
+    private double calculatePercent(double coinValue) {
+        double percent = coinValue-boughtPrice;
+        percent = percent/boughtPrice*100;
+        return percent;
     }
 }
